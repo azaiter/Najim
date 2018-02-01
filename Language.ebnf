@@ -43,7 +43,15 @@ var_name = letter, { letter | number | "_"};
 (* Rules for statements *)
 statement_block = "{", {statement} "}";
 statement = "TODO;";
-expression = "TODO";
+
+(* Expressions *)
+expression = expr_1, [ comparison_operator, expr_1 ];
+expr_1 = [ number_prefix ], expr_2, { sign, expr_2 };
+expr_2 = expr_3, { higher_precedence_operator, expr_3 };
+expr_3 = literal_value | "(", expression, ")";
+comparison_operator = "=" | "<>" | "<" | "<=" | ">" | ">=";
+higher_precedence_operator = "*" | "/" | div | mod | and | "%";
+
 
 (* Rules for Flow Control *)
 if_statement = "if", "(", expression, ")", statement_block, [else, statement_block];
@@ -69,17 +77,20 @@ function_def = "function", var_name, "(", parameter_list, ")", statement_block;
 <statement_list> -> {<statement>;}
 <statement> -> {
 
+
+==================
+expression_1 = [expression_1, ("+" | "-")] expression_1
+<expr_2> -> [<expr_2> (* | / | %)] <expr_3>
+<expr_3> -> [<expr_3> **] <expr_4>
+<expr_4> -> (<expr_1>) | <var_name> | <number> | <string> | <bool>
+
 ===== VARIABLE DECLARATION =====
 <var_declare> -> [const] <type> <var_name> = <value>;
 
 ===== SIMPLE ASSIGNMENT =====
 <assignment> -> <var_name> = <expr>;
 
-===== EXPRESSION =====
-<expr_1> -> [<expr_1> (+ | -)] <expr_2>
-<expr_2> -> [<expr_2> (* | / | %)] <expr_3>
-<expr_3> -> [<expr_3> **] <expr_4>
-<expr_4> -> (<expr_1>) | <var_name> | <number> | <string> | <bool>
+
 
 ===== INPUT/OUTPUT =====
 <input> -> input(<type>);
