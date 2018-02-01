@@ -27,42 +27,37 @@ hex_prefix = "0x";
 hex_number = sign, hex_prefix, hex_digit, {hex_digit};
 
 (* Rules for string literal characters. *)
-string_chars_double_quote = ? Any character except single quote ?;
-string_chars_single_quote = ? Any character except double quote ?;
+string_chars_double_quote = ? Any character except double quote ?;
+string_chars_single_quote = ? Any character except single quote ?;
 
 (* Rules defining basic type literals. *)
 int_literal = binary_number | octal_number | decimal_number | hex_number;
 real_literal = decimal_number, ".", decimal_number;
 bool_literal = "true" | "false";
-string_literal = ("'", { string_chars_single_quote }, "'") | ('"', { string_chars_double_quote }, '"');
+string_literal = ("'", {string_chars_single_quote}, "'") | ('"', {string_chars_double_quote}, '"');
 literal_value = int_literal | real_literal | bool_literal | string_literal;
 
 (* Rules for variable names *)
-var_name = letter, { letter | number | "_"};
+var_name = letter, {letter | number | "_"};
 var_or_literal = var_name | literal_value;
 var_or_int = var_name | int_literal;
 
 (* Rules for statements *)
 statement_block = "{", {statement} "}";
-<<<<<<< HEAD
 statement = (function_statement), ";";
+function_statement = var_name, "(", [var_or_literal, {",", var_or_literal}], ")";
+
+(* Rules for operators *)
+operator_1 = sign | "||";
+operator_2 = "*" | "/" | "%" | "&&";
+operator_3 = "**";
+operator_comparison = "==" | "!=" | "<" | "<=" | ">=" | ">";
 
 (* Rules for Expressions *)
-expression = "TODO";
-=======
-statement = "TODO;";
-
-(* Expressions *)
-expression = expr_1, [ comparison_operator, expr_1 ];
-expr_1 = [ number_prefix ], expr_2, { sign, expr_2 };
-expr_2 = expr_3, { higher_precedence_operator, expr_3 };
-expr_3 = literal_value | "(", expression, ")";
-comparison_operator = "=" | "<>" | "<" | "<=" | ">" | ">=";
-higher_precedence_operator = "*" | "/" | div | mod | and | "%";
-
->>>>>>> origin/master
-
-function_statement = var_name, "(", [var_or_literal, {",", var_or_literal}], ")";
+expression = expression_1, [operator_comparison, expression_1];
+expression_1 = [sign], expression_2, {operator_1, expression_2};
+expression_2 = expression_3, {operator_2, expression_3};
+expression_3 = var_or_literal | "(", expression, ")" | "!", expression_3 | expression_3, operator_3, expression3;
 
 (* Rules for Flow Control *)
 if_statement = "if", "(", expression, ")", statement_block, [else, statement_block];
@@ -75,40 +70,3 @@ parameter = data_type, var_name;
 default_parameter = parameter, "=", literal_value;
 function_def = "function", var_name, "(", parameter_list, ")", statement_block;
 
-<<<<<<< HEAD
-=======
-
-(* STUFF FROM HERE ON OUT STILL NEEDS TO BE IMPLEMENTED!
-<type> ->
-	int | real | string | bool
-<value> ->
-	<int> | <real> | <string> | <bool>
-<var_name> -> <var_start_char>{<var_char>}
-<var_start_char> -> a | ... | z | A | ... | Z
-<var_char> -> <var_start_char> | <digit> | _
-
-<statement_list> -> {<statement>;}
-<statement> -> {
-
-
-==================
-expression_1 = [expression_1, ("+" | "-")] expression_1
-<expr_2> -> [<expr_2> (* | / | %)] <expr_3>
-<expr_3> -> [<expr_3> **] <expr_4>
-<expr_4> -> (<expr_1>) | <var_name> | <number> | <string> | <bool>
-
-===== VARIABLE DECLARATION =====
-<var_declare> -> [const] <type> <var_name> = <value>;
-
-===== SIMPLE ASSIGNMENT =====
-<assignment> -> <var_name> = <expr>;
-
-
-
-===== INPUT/OUTPUT =====
-<input> -> input(<type>);
-<output> -> output(<value>);
-
-===== IF-ELSE =====
-<if_else> -> if(<condition>) { <statement_list> } [else { <statement_list> }] *)
->>>>>>> origin/master
