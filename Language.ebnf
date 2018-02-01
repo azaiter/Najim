@@ -37,15 +37,25 @@ bool_literal = "true" | "false";
 string_literal = ("'", {string_chars_single_quote}, "'") | ('"', {string_chars_double_quote}, '"');
 literal_value = int_literal | real_literal | bool_literal | string_literal;
 
-(* Rules for variable names *)
+(* Rules for variables *)
 var_name = letter, {letter | number | "_"};
 var_or_literal = var_name | literal_value;
 var_or_int = var_name | int_literal;
+var_type = "int" | "real" | "string" | "bool";
 
 (* Rules for statements *)
 statement_block = "{", {statement} "}";
-statement = (function_statement), ";";
-function_statement = var_name, "(", [var_or_literal, {",", var_or_literal}], ")";
+statement = statement_flow | (statement_function_call | statement_var_declare | statement_var_assign | statement_comment), ";";
+statement_function_call = var_name, "(", [var_or_literal, {",", var_or_literal}], ")";
+statement_var_declare = ["const"], var_type, statement_var_assign;
+statement_var_assign = var_name, "=", expression;
+statement_comment = comment;
+statement_flow = statement_if | statement_for | statement_while;
+
+(* Rules for Flow Control *)
+statement_if = "if", "(", expression, ")", statement_block, [else, statement_block];
+statement_for = "for", "(", [var_name, "="], var_or_int, ("to" | "downto"), var_or_int, ["step", var_or_int], ")", statement_block;
+statement_while = "while", "(", expression, ")", statement_block;
 
 (* Rules for operators *)
 operator_1 = sign | "||";
@@ -59,14 +69,16 @@ expression_1 = [sign], expression_2, {operator_1, expression_2};
 expression_2 = expression_3, {operator_2, expression_3};
 expression_3 = var_or_literal | "(", expression, ")" | "!", expression_3 | expression_3, operator_3, expression3;
 
-(* Rules for Flow Control *)
-if_statement = "if", "(", expression, ")", statement_block, [else, statement_block];
-for_statement = "for", "(", [var_name, "="], var_or_int, ("to" | "downto"), var_or_int, ["step", var_or_int], ")", statement_block;
-while_statement = "while", "(", expression, ")", statement_block;
-
 (* Rules for function declarations *)
 parameter_list = [parameter, {",", parameter}, {"," default_parameter}] | [default_parameter, {",", default_parameter}];
 parameter = data_type, var_name;
 default_parameter = parameter, "=", literal_value;
 function_def = "function", var_name, "(", parameter_list, ")", statement_block;
 
+(* Rules for comment declarations *)
+comment_block = "/*", {? Any character sequence not containing */ ?}, "*/";
+comment_single = "//", [{? Any character except \n ?}, "\n"];
+comment = comment_block | comment_single;
+
+(* Rules for the program *)
+program = {comment | function_def | statement_var_assign};
