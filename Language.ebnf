@@ -27,16 +27,34 @@ hex_prefix = "0x";
 hex_number = number_prefix, hex_prefix, hex_digit, {hex_digit};
 
 (* Rules for string literal characters. *)
-string_single_quote_chars = ? Any character except single quote ?;
-string_double_quote_chars = ? Any character except double quote ?;
+string_chars_double_quote = ? Any character except single quote ?;
+string_chars_single_quote = ? Any character except double quote ?;
 
 (* Rules defining basic type literals. *)
 int_literal = binary_number | octal_number | decimal_number | hex_number;
 real_literal = decimal_number, ".", decimal_number;
 bool_literal = "true" | "false";
-string_literal = "'", { string_single_quote_chars }, "'" | '"', { string_double_quote_chars }, '"';
+string_literal = ("'", { string_chars_single_quote }, "'") | ('"', { string_chars_double_quote }, '"');
+literal_value = int_literal | real_literal | bool_literal | string_literal;
 
+(* Rules for variable names *)
+var_name = letter, { letter | number | "_"};
 
+(* Rules for statements *)
+statement_block = "{", {statement} "}";
+statement = "TODO;";
+expression = "TODO";
+
+(* Rules for Flow Control *)
+if_statement = "if", "(", expression, ")", statement_block, [else, statement_block];
+for_statement = "for", "(" int_literal, "to", int_literal, ")", statement_block;
+while_statement = "while", "(", expression, ")", statement_block;
+
+(* Rules for function declarations *)
+parameter_list = [parameter, {",", parameter}, {"," default_parameter}] | [default_parameter, {",", default_parameter}];
+parameter = data_type, var_name;
+default_parameter = parameter, "=", literal_value;
+function_def = "function", var_name, "(", parameter_list, ")", statement_block;
 
 
 (* STUFF FROM HERE ON OUT STILL NEEDS TO BE IMPLEMENTED!
