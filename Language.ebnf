@@ -47,8 +47,8 @@ var_type = "int" | "real" | "string" | "bool";
 statement_block = "{", {statement} "}";
 statement = statement_flow | (statement_function_call | statement_var_declare | statement_var_assign | statement_comment), ";";
 statement_function_call = var_name, "(", [var_or_literal, {",", var_or_literal}], ")";
-statement_var_declare = ["const"], var_type, statement_var_assign;
-statement_var_assign = var_name, "=", expression;
+statement_var_declare = ["const"], var_type, "=", expression;
+statement_var_assign = var_name, ("=" | "+=" | "-=" | "*=" | "/=" | "%=" | "**="), expression;
 statement_comment = comment;
 statement_flow = statement_if | statement_for | statement_while;
 
