@@ -32,7 +32,7 @@ public interface RegexInterface {
         String int_literal = "(" + binary_number + "|" + octal_number + "|" + decimal_number + "|" + hex_number + ")";
         String real_literal = "(" + decimal_number + "." + decimal_number + ")";
         String bool_literal = "true|false";
-        String string_literal = "(('" + string_chars_single_quote + "')" + "|(\"string_chars_double_quote\"))";
+        String string_literal = "(('" + string_chars_single_quote + "')" + "|(\""+ string_chars_double_quote  + "\"))";
         String literal_value = "(" + int_literal + "|" + real_literal + "|" + bool_literal + "|" + string_literal + ")";
 
         //(* Rules for variables *)
