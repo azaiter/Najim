@@ -1,0 +1,14 @@
+{
+  "name": "najim-tokenizer",
+  "version": "0.0.1",
+  "description": "Najim Tokenizer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdulrahman Zaiter, Brendan Jones",
+  "license": "ISC",
+  "dependencies": {
+    "through2": "^2.0.3"
+  }
+}
