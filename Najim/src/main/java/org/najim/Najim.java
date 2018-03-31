@@ -40,8 +40,8 @@ public class Najim {
 		Compiler compiler = new Compiler(context);
 		try {
 			Path dest = Files.createDirectories(Paths.get("out"));
-			
-			Files.walkFileTree(Paths.get("data"), new SourceFileVisitor(compiler, "nj", dest));
+			Path src  = Files.createDirectories(Paths.get("data"));
+			Files.walkFileTree(src, new SourceFileVisitor(compiler, "nj", dest));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
