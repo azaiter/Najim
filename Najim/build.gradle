@@ -1,4 +1,17 @@
-apply plugin: 'java-library'
+plugins {
+  id 'com.github.johnrengelman.shadow' version '2.0.3'
+  id 'java-library'
+}
+
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.najim.Najim'
+    }
+}
 
 repositories {
     jcenter()
@@ -6,5 +19,4 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:24.0-jre'
-    implementation 'org.apache.commons:commons-lang3:3.7'
 }

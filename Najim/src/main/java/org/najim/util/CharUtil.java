@@ -15,6 +15,11 @@ public class CharUtil {
 	private static final char END_OF_FILE = (char) -1;
 	
 	/**
+	 * <p>The null character.</p>
+	 */
+	public static final char NUL = '\0';
+	
+	/**
 	 * <p>Checks whether the specified character terminates a line.</p>
 	 * 
 	 * @param ch The character to check.

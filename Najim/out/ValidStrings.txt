@@ -1,0 +1,7 @@
+Lexeme{position='(1:0)', token='STRING_LITERAL', value='This is a valid string enclosed in double quotes.'}
+Lexeme{position='(2:0)', token='STRING_LITERAL', value='This is a valid string enclosed in single quotes.'}
+Lexeme{position='(4:0)', token='STRING_LITERAL', value='This is a valid string enclosed in double quotes with 'single quotes' inside.'}
+Lexeme{position='(5:0)', token='STRING_LITERAL', value='This is a valid string enclosed in single quotes with "double quotes" inside.'}
+Lexeme{position='(7:0)', token='STRING_LITERAL', value='This is a valid string enclosed in double quotes with \"escaped double quotes\" inside.'}
+Lexeme{position='(8:0)', token='STRING_LITERAL', value='This is a valid string enclosed in single quotes with \'escaped single quotes\' inside.'}
+Lexeme{position='(10:0)', token='STRING_LITERAL', value='This is a valid string with \nmore\nescape\nsequences.'}

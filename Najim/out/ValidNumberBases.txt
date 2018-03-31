@@ -1,0 +1,20 @@
+Lexeme{position='(1:0)', token='IDENTIFIER', value='print'}
+Lexeme{position='(1:5)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(1:6)', token='INTEGER_LITERAL', value='14'}
+Lexeme{position='(1:12)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(1:13)', token='TERMINAL'}
+Lexeme{position='(2:0)', token='IDENTIFIER', value='print'}
+Lexeme{position='(2:5)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(2:6)', token='INTEGER_LITERAL', value='4012'}
+Lexeme{position='(2:12)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(2:13)', token='TERMINAL'}
+Lexeme{position='(3:0)', token='IDENTIFIER', value='print'}
+Lexeme{position='(3:5)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(3:6)', token='INTEGER_LITERAL', value='987654'}
+Lexeme{position='(3:12)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(3:13)', token='TERMINAL'}
+Lexeme{position='(4:0)', token='IDENTIFIER', value='print'}
+Lexeme{position='(4:5)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(4:6)', token='INTEGER_LITERAL', value='65516'}
+Lexeme{position='(4:12)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(4:13)', token='TERMINAL'}

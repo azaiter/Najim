@@ -1,0 +1,10 @@
+Lexeme{position='(1:0)', token='COMMENT_SINGLE', value='# This comment starts the file.'}
+Lexeme{position='(3:0)', token='KEYWORD_FUNCTION'}
+Lexeme{position='(3:9)', token='IDENTIFIER', value='main'}
+Lexeme{position='(3:13)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(3:14)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(3:16)', token='OPEN_BRACE'}
+Lexeme{position='(3:18)', token='COMMENT_SINGLE', value='#This comment is at the end of a line'}
+Lexeme{position='(4:1)', token='COMMENT_SINGLE', value='#This is two comments # on the same line.'}
+Lexeme{position='(5:0)', token='CLOSE_BRACE'}
+Lexeme{position='(7:0)', token='COMMENT_SINGLE', value='# This comment ends the file.'}

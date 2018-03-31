@@ -2,7 +2,10 @@ package org.najim;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.najim.compiler.Compiler;
 import org.najim.compiler.CompilerContext;
@@ -22,7 +25,7 @@ import org.najim.compiler.lexer.impl.StringLexer;
  */
 public class Najim {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		CompilerContext context = new CompilerContext();
 				
 		//Register the lexers to the context.
@@ -36,16 +39,13 @@ public class Najim {
 		//Create the compiler and attempt to compile the program.
 		Compiler compiler = new Compiler(context);
 		try {
-			Files.walkFileTree(Paths.get("data"), new SourceFileVisitor(compiler, "nj", Paths.get("out")));
+			Path dest = Files.createDirectories(Paths.get("out"));
+			
+			Files.walkFileTree(Paths.get("data"), new SourceFileVisitor(compiler, "nj", dest));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-//		try {
-//			compiler.compile(Paths.get("data", "test.nj"), Paths.get("data", "test.java"));
-//		} catch(IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 	
 }

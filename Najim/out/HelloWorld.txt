@@ -1,0 +1,16 @@
+Lexeme{position='(1:0)', token='KEYWORD_FUNCTION'}
+Lexeme{position='(1:9)', token='IDENTIFIER', value='main'}
+Lexeme{position='(1:13)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(1:14)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(1:16)', token='OPEN_BRACE'}
+Lexeme{position='(2:4)', token='KEYWORD_STRING'}
+Lexeme{position='(2:11)', token='IDENTIFIER', value='message'}
+Lexeme{position='(2:19)', token='OP_ASSIGN'}
+Lexeme{position='(2:21)', token='STRING_LITERAL', value='Hello, World!'}
+Lexeme{position='(2:36)', token='TERMINAL'}
+Lexeme{position='(3:4)', token='IDENTIFIER', value='print'}
+Lexeme{position='(3:9)', token='OPEN_PARENTHESIS'}
+Lexeme{position='(3:10)', token='IDENTIFIER', value='message'}
+Lexeme{position='(3:17)', token='CLOSE_PARENTHESIS'}
+Lexeme{position='(3:18)', token='TERMINAL'}
+Lexeme{position='(4:0)', token='CLOSE_BRACE'}

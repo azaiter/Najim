@@ -3,7 +3,6 @@ package org.najim.compiler.lexer.impl;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.commons.lang3.CharUtils;
 import org.najim.compiler.lexer.AttributeKey;
 import org.najim.compiler.lexer.Lexeme;
 import org.najim.compiler.lexer.Lexer;
@@ -62,7 +61,7 @@ public class StringLexer extends Lexer {
 	@Override
 	protected void resetState() {
 		this.builder = new StringBuilder();
-		this.terminal = CharUtils.NUL;
+		this.terminal = CharUtil.NUL;
 		this.isEscaped = false;
 	}
 
@@ -70,7 +69,7 @@ public class StringLexer extends Lexer {
 	protected LexerResult readNextChar(char ch) throws LexerException {
 		if(CharUtil.isEOF(ch) || CharUtil.isLineTerminal(ch)) {
 			throw createTerminationException();
-		} else if(terminal == CharUtils.NUL) {
+		} else if(terminal == CharUtil.NUL) {
 			this.terminal = ch;
 		} else if(isEscaped) {
 			builder.append(ch);
