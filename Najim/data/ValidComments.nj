@@ -1,0 +1,7 @@
+# This comment starts the file.
+
+function main() { #This comment is at the end of a line
+	#This is two comments # on the same line.
+}
+
+# This comment ends the file.

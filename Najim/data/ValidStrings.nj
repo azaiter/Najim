@@ -1,0 +1,10 @@
+"This is a valid string enclosed in double quotes."
+'This is a valid string enclosed in single quotes.'
+
+"This is a valid string enclosed in double quotes with 'single quotes' inside."
+'This is a valid string enclosed in single quotes with "double quotes" inside.'
+
+"This is a valid string enclosed in double quotes with \"escaped double quotes\" inside."
+'This is a valid string enclosed in single quotes with \'escaped single quotes\' inside.'
+
+"This is a valid string with \nmore\nescape\nsequences."

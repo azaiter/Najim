@@ -1,4 +1,0 @@
-function start() {
-	string message = "Hello world!";
-	print(message);
-}

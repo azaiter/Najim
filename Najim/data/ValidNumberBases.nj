@@ -1,0 +1,4 @@
+print(0b1110);
+print(0o7654);
+print(987654);
+print(0xFFEC);
