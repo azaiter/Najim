@@ -1,0 +1,4 @@
+function main() {
+    int x = 0b;
+    print(x);
+}
